@@ -65,25 +65,31 @@ h1, h2, h3 {
 /* Home */
 .home-section {
   background-color: #007dff;
-  padding: 4rem 2rem;
+  padding-left: 6rem;
   color: #f4f4f4;
 }
 
 .home-grid {
-  width: 55rem;  
+  display: grid;
+  grid-template-columns: 0.8fr 1fr;
   align-items: center;
   gap: 2rem;
 }
 
+.text {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
 .home-grid h2 {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
   color: #f4f4f4;
 }
 
 .home-grid p {
-  font-size: 1.125rem;
+  font-size: 1.3rem;
   margin-bottom: 2rem;
 }
 
@@ -106,12 +112,30 @@ h1, h2, h3 {
   transform: translateY(-2px);
 }
 
-.home-grid img {
+.image-side {
   width: 100%;
-  max-width: 500px;
-  display: block;
-  margin: auto;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
 }
+
+.image-side::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.image-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 0;
+  opacity: 70%;
+}
+
 
 /* About */
 .about-section {
@@ -122,27 +146,50 @@ h1, h2, h3 {
 .about-section h2 {
   text-align: center;
   margin-bottom: 1rem;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
-.about-cards {
+/* About Grid Moderno */
+.about-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
-.about-cards .card {
+.about-item {
   background-color: #f3f4f6;
-  padding: 1.5rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
 }
 
-.about-cards h3 {
-  margin-bottom: 0.75rem;
-  color: #4f46e5;
+.about-item:hover {
+  transform: translateY(-6px);
 }
+
+.about-item i {
+  color: #3b82f6;
+  margin-bottom: 1rem;
+}
+
+.about-item h3 {
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.about-intro {
+  text-align: center;
+  color: #2e343b;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+
 
 /* Funcionalidades */
 .services-section {
@@ -152,7 +199,7 @@ h1, h2, h3 {
 }
 
 .services-section h2 {
-  font-size: 2rem;
+  font-size: 3rem;
   margin-bottom: 2rem;
 }
 
@@ -195,20 +242,20 @@ h1, h2, h3 {
 
 /* Carrusel */
 .carousel-section {
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 4rem 2rem;
   text-align: center;
 }
 
 .carousel-section h2 {
-  font-size: 2rem;
+  font-size: 3rem;
   margin-bottom: 2rem;
 }
 
 
 .carousel-wrapper {
   position: relative;
-  max-width: 800px;
+  width: 100%;
   margin: auto;
   overflow: hidden;
   border-radius: 1rem;
@@ -235,7 +282,7 @@ h1, h2, h3 {
   top: 50%;
   transform: translateY(-50%);
   font-size: 2rem;
-  background: rgba(255,255,255,0.8);
+  background: none;
   border: none;
   border-radius: 50%;
   width: 40px;
@@ -243,10 +290,12 @@ h1, h2, h3 {
   cursor: pointer;
   z-index: 2;
   transition: background 0.2s ease;
+ 
 }
 
 .carousel-btn:hover {
-  background: rgba(255,255,255,1);
+  width: 50px;
+  height: 50px;
 }
 
 .carousel-btn.prev {
@@ -258,64 +307,6 @@ h1, h2, h3 {
 }
 
 
-/* Planes */
-.planes-section {
-  background-color: #f9fafb;
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-.planes-section h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-
-.planes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.plan-card {
-  background-color: white;
-  padding: 2rem 1.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-  transition: transform 0.2s ease;
-}
-
-.plan-card:hover {
-  transform: translateY(-4px);
-}
-
-.plan-card h3 {
-  color: #3b82f6;
-  margin-bottom: 0.5rem;
-}
-
-.plan-card p {
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.plan-card ul {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 1.5rem;
-}
-
-.plan-card ul li {
-  margin: 0.5rem 0;
-  color: #4b5563;
-}
-
-.plan-card.destacado {
-  border: 2px solid #3b82f6;
-  background-color: #e0f2fe;
-}
-
 /* Testimonios */
 .testimonios-section {
   background-color: #3b82f6;
@@ -325,6 +316,7 @@ h1, h2, h3 {
 
 .testimonios-section h2 {
   color: #f4f4f4;
+  font-size: 3rem;
 }
 
 .testimonios {
@@ -374,6 +366,27 @@ h1, h2, h3 {
   margin-top: 0.25rem;
 }
 
+
+/* Aclaración antes de contacto */
+.contact-info-section {
+  background-color: #ffffff;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.contact-info-text h2 {
+  font-size: 3rem;
+  color: #3b82f6;
+  margin-bottom: 1rem;
+}
+
+.contact-info-text p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #1f2937;
+  font-size: 1.1rem;
+}
+
 /* Contacto */
 .contact-section {
   background-color: #ffffff;
@@ -382,7 +395,8 @@ h1, h2, h3 {
 
 .contact-section h2 {
   text-align: center;
-  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .contact-text {
